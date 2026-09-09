@@ -13,6 +13,7 @@ My solution to the [Clock app](https://www.frontendmentor.io/challenges/clock-ap
 - React
 - TypeScript
 - Tailwind CSS
+- Cloudflare Workers
 
 ## Author
 

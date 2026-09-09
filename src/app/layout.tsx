@@ -14,7 +14,7 @@ const shareImage = {
   url: "/opengraph-image.jpg",
   width: 1200,
   height: 630,
-  alt: "The clock. wordmark above the headline “The time where you are”.",
+  alt: "The clock. app beside the headline “The time where you are”.",
 };
 
 const periodScript = `document.documentElement.dataset.period=new Date().getHours()>=${NIGHT_HOUR}?"night":"day"`;
