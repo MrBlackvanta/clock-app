@@ -88,6 +88,10 @@
     --reveal-ease: cubic-bezier(0.32, 0.72, 0, 1);
     --wipe-headroom: 14px;
 
+    --write-duration: 220ms;
+    --write-pace: 10ms;
+    --write-bleed: 0.2em;
+
     --ground: var(--color-ink);
     --scrim: rgb(0 0 0 / 0.54);
     --panel-wash: rgb(255 255 255 / 0.75);
@@ -186,5 +190,27 @@
   @variant motion-reduce {
     transition-property: none;
     transition-delay: 0s;
+  }
+}
+
+@keyframes v-write {
+  from {
+    clip-path: inset(
+      calc(-1 * var(--write-bleed)) calc(100% + var(--write-bleed))
+        calc(-1 * var(--write-bleed)) calc(-1 * var(--write-bleed))
+    );
+  }
+
+  to {
+    clip-path: inset(calc(-1 * var(--write-bleed)));
+  }
+}
+
+@utility v-write {
+  display: inline-block;
+
+  @variant motion-safe {
+    animation: v-write var(--write-duration) var(--reveal-ease) backwards;
+    animation-delay: calc(var(--v-char, 0) * var(--write-pace));
   }
 }

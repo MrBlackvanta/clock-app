@@ -1,6 +1,10 @@
 import { RefreshIcon } from "@/components/icons";
 import { quotes } from "@/data";
-import { useState } from "react";
+import { Fragment, useState, type CSSProperties } from "react";
+
+function randomIndex() {
+  return Math.floor(Math.random() * quotes.length);
+}
 
 function anotherIndex(current: number) {
   return (
@@ -9,9 +13,25 @@ function anotherIndex(current: number) {
   );
 }
 
+function pacedWords(text: string) {
+  let offset = 0;
+
+  return text.split(" ").map((word) => {
+    const startsAt = offset;
+    offset += word.length + 1;
+
+    return { word, startsAt };
+  });
+}
+
+function writeFrom(character: number) {
+  return { "--v-char": character } as CSSProperties;
+}
+
 export default function QuoteCard() {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(randomIndex);
   const quote = quotes[index];
+  const quoted = `“${quote.text}”`;
 
   return (
     <figure className="v-gutter flex min-h-0 items-start gap-4 self-start">
@@ -20,10 +40,25 @@ export default function QuoteCard() {
         className="flex max-w-135 flex-1 flex-col gap-2 md:gap-3"
       >
         <blockquote className="text-quote md:text-quote-md">
-          <p>“{quote.text}”</p>
+          <p key={index}>
+            {pacedWords(quoted).map(({ word, startsAt }, position) => (
+              <Fragment key={position}>
+                {position > 0 && " "}
+                <span className="v-write" style={writeFrom(startsAt)}>
+                  {word}
+                </span>
+              </Fragment>
+            ))}
+          </p>
         </blockquote>
         <figcaption className="text-quote md:text-quote-md font-bold">
-          {quote.author}
+          <span
+            key={index}
+            className="v-write"
+            style={writeFrom(quoted.length + 1)}
+          >
+            {quote.author}
+          </span>
         </figcaption>
       </div>
       <button

@@ -26,9 +26,10 @@ export default function ClockApp() {
       <div className="v-reveal lg:expanded:pb-14 flex flex-col justify-end pt-8 pb-10 md:pt-20 md:pb-16 lg:pt-14 lg:pb-24.5">
         <div
           aria-hidden={expanded || undefined}
+          inert={expanded || undefined}
           className="v-reveal v-wipe expanded:grid-rows-[0fr] mb-auto grid grid-rows-[1fr]"
         >
-          <QuoteCard />
+          {now && <QuoteCard />}
         </div>
         <div className="v-gutter flex flex-col gap-12 md:gap-20 lg:flex-row lg:items-end lg:justify-between lg:gap-0">
           <ClockReadout now={now} place={cityOf(timeZoneId())} />
