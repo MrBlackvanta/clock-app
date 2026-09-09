@@ -20,7 +20,7 @@ export default function ClockApp() {
     <main
       data-expanded={expanded || undefined}
       data-pending={now ? undefined : true}
-      className="v-backdrop grid min-h-dvh grid-rows-[1fr_auto]"
+      className="grid min-h-dvh grid-rows-[1fr_auto]"
     >
       <h1 className="sr-only">The time where you are</h1>
       <div className="v-reveal lg:expanded:pb-14 md-short:pt-8 md-short:pb-10 flex flex-col justify-end pt-8 pb-10 md:pt-20 md:pb-16 lg:pt-14 lg:pb-24.5">
