@@ -3,14 +3,111 @@
 
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --breakpoint-sm: initial;
+  --breakpoint-lg: 1440px;
+  --breakpoint-xl: initial;
+  --breakpoint-2xl: initial;
+
+  --color-ink: #303030;
+  --color-ink-soft: #949494;
+  --color-muted: #767676;
+
+  --text-clock: 6.25rem;
+  --text-clock--line-height: 1;
+  --text-clock--letter-spacing: -0.025em;
+  --text-clock-md: 10.9375rem;
+  --text-clock-md--line-height: 1;
+  --text-clock-md--letter-spacing: -0.025em;
+  --text-clock-lg: 12.5rem;
+  --text-clock-lg--line-height: 1;
+  --text-clock-lg--letter-spacing: -0.025em;
+
+  --text-zone: 0.9375rem;
+  --text-zone--line-height: 1.75rem;
+  --text-zone-md: 2rem;
+  --text-zone-md--line-height: 1.75rem;
+  --text-zone-lg: 2.5rem;
+  --text-zone-lg--line-height: 1.75rem;
+
+  --text-greeting: 0.9375rem;
+  --text-greeting--line-height: 1.5625rem;
+  --text-greeting--letter-spacing: 0.2em;
+  --text-greeting-md: 1.125rem;
+  --text-greeting-md--line-height: 1.75rem;
+  --text-greeting-md--letter-spacing: 0.2em;
+  --text-greeting-lg: 1.25rem;
+  --text-greeting-lg--line-height: 1.75rem;
+  --text-greeting-lg--letter-spacing: 0.2em;
+
+  --text-place: 0.9375rem;
+  --text-place--line-height: 1.75rem;
+  --text-place--letter-spacing: 0.2em;
+  --text-place-md: 1.125rem;
+  --text-place-md--line-height: 1.75rem;
+  --text-place-md--letter-spacing: 0.2em;
+  --text-place-lg: 1.5rem;
+  --text-place-lg--line-height: 1.75rem;
+  --text-place-lg--letter-spacing: 0.2em;
+
+  --text-toggle: 0.75rem;
+  --text-toggle--line-height: 0.875rem;
+  --text-toggle--letter-spacing: 0.3125em;
+  --text-toggle-md: 1rem;
+  --text-toggle-md--line-height: 1.75rem;
+  --text-toggle-md--letter-spacing: 0.3125em;
+
+  --text-quote: 0.75rem;
+  --text-quote--line-height: 1.375rem;
+  --text-quote-md: 1.125rem;
+  --text-quote-md--line-height: 1.75rem;
+
+  --text-detail-label: 0.625rem;
+  --text-detail-label--line-height: 1.75rem;
+  --text-detail-label--letter-spacing: 0.2em;
+  --text-detail-label-md: 0.8125rem;
+  --text-detail-label-md--line-height: 1.75rem;
+  --text-detail-label-md--letter-spacing: 0.2em;
+  --text-detail-label-lg: 0.9375rem;
+  --text-detail-label-lg--line-height: 1.75rem;
+  --text-detail-label-lg--letter-spacing: 0.2em;
+
+  --text-detail-value: 1.25rem;
+  --text-detail-value--line-height: 1.5rem;
+  --text-detail-value-md: 2.5rem;
+  --text-detail-value-md--line-height: 3rem;
+  --text-detail-value-lg: 3.5rem;
+  --text-detail-value-lg--line-height: 4.25rem;
 }
 
 @layer base {
+  :root {
+    --ground: var(--color-ink);
+    --scrim: rgb(0 0 0 / 0.54);
+    --panel-wash: rgb(255 255 255 / 0.75);
+    --panel-ink: var(--color-ink);
+    --panel-rule: rgb(48 48 48 / 0.25);
+  }
+
+  [data-period="night"] {
+    --ground: #000000;
+    --scrim: rgb(0 0 0 / 0.4);
+    --panel-wash: rgb(0 0 0 / 0.75);
+    --panel-ink: #ffffff;
+    --panel-rule: rgb(255 255 255 / 0.25);
+  }
+
   body {
+    background-color: var(--ground);
+    color: #ffffff;
     font-family: var(--font-sans);
   }
 
   button:not(:disabled) {
     cursor: pointer;
   }
+}
+
+@utility v-focus-ring {
+  @apply focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white;
 }

@@ -4,7 +4,7 @@ import "./globals.css";
 
 const SITE_URL = "https://clock-app.abdelrhman-ahmed8881.workers.dev";
 
-const name = "Meridian";
+const name = "clock.";
 const title = `${name} | The time where you are`;
 const description =
   "See the time where you are, with the greeting and the view that match your part of the day. Refresh for a new programming quote whenever you like.";
@@ -13,7 +13,7 @@ const shareImage = {
   url: "/opengraph-image.jpg",
   width: 1200,
   height: 630,
-  alt: "The Meridian share card, headlined “The time where you are”.",
+  alt: "The clock. wordmark above the headline “The time where you are”.",
 };
 
 const inter = Inter({
