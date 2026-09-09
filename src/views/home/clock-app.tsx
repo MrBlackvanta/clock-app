@@ -1,16 +1,19 @@
 "use client";
 
-import { cityOf, periodFor, timeZoneId } from "@/lib";
+import { cityOf, periodFor, placeLabel, timeZoneId } from "@/lib";
 import { useEffect, useState } from "react";
 import ClockReadout from "./clock-readout";
 import DetailsPanel from "./details-panel";
 import QuoteCard from "./quote-card";
 import TogglePill from "./toggle-pill";
 import { useNow } from "./use-now";
+import { usePlace } from "./use-place";
 
 export default function ClockApp() {
   const [expanded, setExpanded] = useState(false);
   const now = useNow();
+  const located = usePlace();
+  const place = located ? placeLabel(located) : cityOf(timeZoneId());
 
   useEffect(() => {
     if (now) document.documentElement.dataset.period = periodFor(now);
@@ -32,7 +35,7 @@ export default function ClockApp() {
           {now && <QuoteCard />}
         </div>
         <div className="v-gutter flex flex-col gap-12 md:gap-20 lg:flex-row lg:items-end lg:justify-between lg:gap-0">
-          <ClockReadout now={now} place={cityOf(timeZoneId())} />
+          <ClockReadout now={now} place={place} />
           <TogglePill
             expanded={expanded}
             onToggle={() => setExpanded(!expanded)}
