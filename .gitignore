@@ -1,0 +1,30 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# premium design files and briefs — never publish these
+frontend-mentor-files/
+*.fig
+*.sketch
+*.xd
+
+# dependencies
+node_modules
+
+# next.js
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# cloudflare
+.wrangler/
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+.pnpm-debug.log*
+
+# env files
+.env*
