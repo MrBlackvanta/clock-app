@@ -1,6 +1,6 @@
 import { Backdrop } from "@/components/layout";
 import { SITE_URL } from "@/data";
-import { NIGHT_HOUR } from "@/lib";
+import { prePaintScript } from "@/lib";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -16,13 +16,6 @@ const shareImage = {
   height: 630,
   alt: "The clock. app beside the headline “The time where you are”.",
 };
-
-const periodScript = `
-  const period = new Date().getHours() >= ${NIGHT_HOUR} ? "night" : "day";
-  document.documentElement.dataset.period = period;
-  for (const node of document.querySelectorAll("[data-day]"))
-    node[node.tagName === "IMG" ? "src" : "srcset"] = node.dataset[period];
-`;
 
 const inter = Inter({
   variable: "--font-inter",
@@ -71,8 +64,8 @@ export default function RootLayout({
     >
       <body>
         <Backdrop />
-        <script dangerouslySetInnerHTML={{ __html: periodScript }} />
         {children}
+        <script dangerouslySetInnerHTML={{ __html: prePaintScript }} />
       </body>
     </html>
   );

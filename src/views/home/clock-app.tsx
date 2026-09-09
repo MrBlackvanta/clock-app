@@ -19,7 +19,6 @@ export default function ClockApp() {
   return (
     <main
       data-expanded={expanded || undefined}
-      data-pending={now ? undefined : true}
       className="grid min-h-dvh grid-rows-[1fr_auto]"
     >
       <h1 className="sr-only">The time where you are</h1>

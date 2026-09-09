@@ -2,7 +2,7 @@ export const NIGHT_HOUR = 18;
 
 type Period = "day" | "night";
 
-const ABBREVIATION_LOCALES = ["en-GB", "en-US"];
+export const ABBREVIATION_LOCALES = ["en-GB", "en-US"];
 const DAY = 86_400_000;
 
 const pad = (value: number) => String(value).padStart(2, "0");

@@ -2,7 +2,8 @@
 @source not "../../*.md";
 
 @custom-variant expanded ([data-expanded] &, [data-expanded] ~ &);
-@custom-variant pending ([data-pending] &);
+@custom-variant night ([data-period="night"] &);
+@custom-variant pending (:root:not([data-period]) &);
 @custom-variant md-short (@media (48rem <= width < 90rem) and (height < 60rem));
 
 @theme {
