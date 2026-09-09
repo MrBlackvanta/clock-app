@@ -3,6 +3,7 @@
 
 @custom-variant expanded ([data-expanded] &, [data-expanded] ~ &);
 @custom-variant pending ([data-pending] &);
+@custom-variant md-short (@media (48rem <= width < 90rem) and (height < 60rem));
 
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;

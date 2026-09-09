@@ -1,9 +1,8 @@
+import { SITE_URL } from "@/data";
 import { NIGHT_HOUR } from "@/lib";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-
-const SITE_URL = "https://clock-app.abdelrhman-ahmed8881.workers.dev";
 
 const name = "clock.";
 const title = `${name} | The time where you are`;

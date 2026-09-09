@@ -4,17 +4,17 @@ import {
   hoursAndMinutes,
   isoLocalMinute,
   periodFor,
+  placeFor,
   zoneAbbreviation,
 } from "@/lib";
+import { usePlace } from "./use-place";
 
 const SAMPLE_MOMENT = new Date(2021, 9, 22, 11, 37);
+const SAMPLE_ZONE = "BST";
+const SAMPLE_PLACE = "London";
 
-type ClockReadoutProps = {
-  now: Date | null;
-  place: string;
-};
-
-export default function ClockReadout({ now, place }: ClockReadoutProps) {
+export default function ClockReadout({ now }: { now: Date | null }) {
+  const located = usePlace();
   const moment = now ?? SAMPLE_MOMENT;
   const Icon = periodFor(moment) === "night" ? MoonIcon : SunIcon;
 
@@ -35,11 +35,11 @@ export default function ClockReadout({ now, place }: ClockReadoutProps) {
           {hoursAndMinutes(moment)}
         </time>
         <span className="text-zone md:text-zone-md lg:text-zone-lg font-light">
-          {zoneAbbreviation(moment)}
+          {now ? zoneAbbreviation(now) : SAMPLE_ZONE}
         </span>
       </p>
       <p className="text-place md:text-place-md lg:text-place-lg font-bold uppercase">
-        In {place}
+        In {now ? placeFor(located) : SAMPLE_PLACE}
       </p>
     </div>
   );

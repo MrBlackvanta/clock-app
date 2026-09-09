@@ -20,7 +20,7 @@ function DetailPair({ label, value }: DetailPairProps) {
 
 export default function DetailsPanel({ now }: { now: Date }) {
   return (
-    <section className="v-panel-wash v-panel-ink relative shrink-0 py-12 backdrop-blur-2xl md:py-30 lg:py-18.5">
+    <section className="v-panel-wash v-panel-ink md-short:py-12 relative shrink-0 py-12 backdrop-blur-2xl md:py-30 lg:py-18.5">
       <h2 className="sr-only">Time zone details</h2>
       <div className="v-panel-rule absolute inset-y-18.5 left-1/2 hidden w-px lg:block" />
       <dl className="v-gutter flex flex-col gap-4 md:grid md:grid-flow-col md:grid-cols-2 md:grid-rows-2 md:gap-x-32 md:gap-y-12 lg:gap-x-55 lg:gap-y-10.5">
