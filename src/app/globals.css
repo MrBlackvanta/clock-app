@@ -1,19 +1,21 @@
 @import "tailwindcss";
 @source not "../../*.md";
 
+@custom-variant expanded ([data-expanded] &, [data-expanded] ~ &);
+@custom-variant pending ([data-pending] &);
+
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   --breakpoint-sm: initial;
-  --breakpoint-lg: 1440px;
+  --breakpoint-lg: 90rem;
   --breakpoint-xl: initial;
   --breakpoint-2xl: initial;
 
   --color-ink: #303030;
-  --color-ink-soft: #949494;
   --color-muted: #767676;
 
-  --text-clock: 6.25rem;
+  --text-clock: min(6.25rem, 27vw);
   --text-clock--line-height: 1;
   --text-clock--letter-spacing: -0.025em;
   --text-clock-md: 10.9375rem;
@@ -87,17 +89,23 @@
     --panel-wash: rgb(255 255 255 / 0.75);
     --panel-ink: var(--color-ink);
     --panel-rule: rgb(48 48 48 / 0.25);
+    --photo-mobile: url("../assets/bg-daytime-mobile.webp");
+    --photo-tablet: url("../assets/bg-daytime-tablet.webp");
+    --photo-desktop: url("../assets/bg-daytime-desktop.webp");
   }
 
   [data-period="night"] {
     --ground: #000000;
-    --scrim: rgb(0 0 0 / 0.4);
     --panel-wash: rgb(0 0 0 / 0.75);
     --panel-ink: #ffffff;
     --panel-rule: rgb(255 255 255 / 0.25);
+    --photo-mobile: url("../assets/bg-nighttime-mobile.webp");
+    --photo-tablet: url("../assets/bg-nighttime-tablet.webp");
+    --photo-desktop: url("../assets/bg-nighttime-desktop.webp");
   }
 
   body {
+    position: relative;
     background-color: var(--ground);
     color: #ffffff;
     font-family: var(--font-sans);
@@ -110,4 +118,44 @@
 
 @utility v-focus-ring {
   @apply focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white;
+}
+
+@utility v-gutter {
+  @apply px-6.5;
+
+  @variant md {
+    @apply px-16;
+  }
+
+  @variant lg {
+    @apply px-41.25;
+  }
+}
+
+@utility v-backdrop {
+  --photo: var(--photo-mobile);
+  background-image: linear-gradient(var(--scrim), var(--scrim)), var(--photo);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @variant md {
+    --photo: var(--photo-tablet);
+  }
+
+  @variant lg {
+    --photo: var(--photo-desktop);
+  }
+}
+
+@utility v-panel-wash {
+  background-color: var(--panel-wash);
+}
+
+@utility v-panel-ink {
+  color: var(--panel-ink);
+}
+
+@utility v-panel-rule {
+  background-color: var(--panel-rule);
 }

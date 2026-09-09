@@ -1,3 +1,4 @@
+import { NIGHT_HOUR } from "@/lib";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -15,6 +16,8 @@ const shareImage = {
   height: 630,
   alt: "The clock. wordmark above the headline “The time where you are”.",
 };
+
+const periodScript = `document.documentElement.dataset.period=new Date().getHours()>=${NIGHT_HOUR}?"night":"day"`;
 
 const inter = Inter({
   variable: "--font-inter",
@@ -57,7 +60,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} antialiased`}>
-      <body>{children}</body>
+      <body>
+        <script dangerouslySetInnerHTML={{ __html: periodScript }} />
+        {children}
+      </body>
     </html>
   );
 }

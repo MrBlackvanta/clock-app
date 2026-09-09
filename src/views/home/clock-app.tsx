@@ -1,0 +1,39 @@
+"use client";
+
+import { cityOf, periodFor, timeZoneId } from "@/lib";
+import { useEffect, useState } from "react";
+import ClockReadout from "./clock-readout";
+import DetailsPanel from "./details-panel";
+import QuoteCard from "./quote-card";
+import TogglePill from "./toggle-pill";
+import { useNow } from "./use-now";
+
+export default function ClockApp() {
+  const [expanded, setExpanded] = useState(false);
+  const now = useNow();
+
+  useEffect(() => {
+    if (now) document.documentElement.dataset.period = periodFor(now);
+  }, [now]);
+
+  return (
+    <main
+      data-expanded={expanded || undefined}
+      data-pending={now ? undefined : true}
+      className="v-backdrop grid min-h-dvh grid-rows-[1fr_auto]"
+    >
+      <h1 className="sr-only">The time where you are</h1>
+      <div className="lg:expanded:pb-14 flex flex-col justify-end pt-8 pb-10 md:pt-20 md:pb-16 lg:pt-14 lg:pb-24.5">
+        <QuoteCard />
+        <div className="v-gutter flex flex-col gap-12 md:gap-20 lg:flex-row lg:items-end lg:justify-between lg:gap-0">
+          <ClockReadout now={now} place={cityOf(timeZoneId())} />
+          <TogglePill
+            expanded={expanded}
+            onToggle={() => setExpanded(!expanded)}
+          />
+        </div>
+      </div>
+      {expanded && now && <DetailsPanel now={now} />}
+    </main>
+  );
+}
