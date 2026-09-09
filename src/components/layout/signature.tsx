@@ -1,6 +1,6 @@
 export default function Signature() {
   return (
-    <footer className="text-quote expanded:v-panel-ink absolute inset-x-0 bottom-0.5 text-center text-white">
+    <footer className="text-quote v-reveal-ink expanded:v-panel-ink expanded:delay-0 absolute inset-x-0 bottom-0.5 text-center text-white">
       Coded by{" "}
       <a
         href="https://www.linkedin.com/in/abdelrhman-vanta/"

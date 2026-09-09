@@ -84,6 +84,10 @@
 
 @layer base {
   :root {
+    --reveal-duration: 500ms;
+    --reveal-ease: cubic-bezier(0.32, 0.72, 0, 1);
+    --wipe-headroom: 14px;
+
     --ground: var(--color-ink);
     --scrim: rgb(0 0 0 / 0.54);
     --panel-wash: rgb(255 255 255 / 0.75);
@@ -158,4 +162,29 @@
 
 @utility v-panel-rule {
   background-color: var(--panel-rule);
+}
+
+@utility v-wipe {
+  clip-path: inset(calc(-1 * var(--wipe-headroom)) 0 0 0);
+}
+
+@utility v-reveal {
+  transition-property: grid-template-rows, padding-bottom, rotate;
+  transition-duration: var(--reveal-duration);
+  transition-timing-function: var(--reveal-ease);
+
+  @variant motion-reduce {
+    transition-property: none;
+  }
+}
+
+@utility v-reveal-ink {
+  transition-property: color;
+  transition-duration: 1ms;
+  transition-delay: var(--reveal-duration);
+
+  @variant motion-reduce {
+    transition-property: none;
+    transition-delay: 0s;
+  }
 }

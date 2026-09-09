@@ -23,8 +23,13 @@ export default function ClockApp() {
       className="v-backdrop grid min-h-dvh grid-rows-[1fr_auto]"
     >
       <h1 className="sr-only">The time where you are</h1>
-      <div className="lg:expanded:pb-14 flex flex-col justify-end pt-8 pb-10 md:pt-20 md:pb-16 lg:pt-14 lg:pb-24.5">
-        <QuoteCard />
+      <div className="v-reveal lg:expanded:pb-14 flex flex-col justify-end pt-8 pb-10 md:pt-20 md:pb-16 lg:pt-14 lg:pb-24.5">
+        <div
+          aria-hidden={expanded || undefined}
+          className="v-reveal v-wipe expanded:grid-rows-[0fr] mb-auto grid grid-rows-[1fr]"
+        >
+          <QuoteCard />
+        </div>
         <div className="v-gutter flex flex-col gap-12 md:gap-20 lg:flex-row lg:items-end lg:justify-between lg:gap-0">
           <ClockReadout now={now} place={cityOf(timeZoneId())} />
           <TogglePill
@@ -33,7 +38,15 @@ export default function ClockApp() {
           />
         </div>
       </div>
-      {expanded && now && <DetailsPanel now={now} />}
+      <div
+        id="time-zone-details"
+        aria-hidden={!expanded || undefined}
+        className="v-reveal expanded:grid-rows-[1fr] grid grid-rows-[0fr] content-end overflow-hidden"
+      >
+        <div className="flex min-h-0 flex-col justify-end">
+          {now && <DetailsPanel now={now} />}
+        </div>
+      </div>
     </main>
   );
 }
