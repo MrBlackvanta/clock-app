@@ -1,20 +1,18 @@
 "use client";
 
-import { periodFor } from "@/lib";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ClockReadout from "./clock-readout";
 import DetailsPanel from "./details-panel";
 import QuoteCard from "./quote-card";
 import TogglePill from "./toggle-pill";
 import { useNow } from "./use-now";
+import { usePeriod } from "./use-period";
 
 export default function ClockApp() {
   const [expanded, setExpanded] = useState(false);
   const now = useNow();
 
-  useEffect(() => {
-    if (now) document.documentElement.dataset.period = periodFor(now);
-  }, [now]);
+  usePeriod(now);
 
   return (
     <main

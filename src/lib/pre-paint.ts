@@ -11,8 +11,8 @@ export const prePaintScript = `
   const clock = pad(now.getHours()) + ":" + pad(now.getMinutes());
   const [period, greeting] = ${JSON.stringify(BY_LOCAL_HOUR)}[now.getHours()];
 
-  for (const node of document.querySelectorAll("[data-day]"))
-    node[node.tagName === "IMG" ? "src" : "srcset"] = node.dataset[period];
+  for (const node of document.querySelectorAll('[data-photo="' + period + '"] [data-src]'))
+    node[node.tagName === "IMG" ? "src" : "srcset"] = node.dataset.src;
 
   let zone = "";
   for (const locale of ${JSON.stringify(ABBREVIATION_LOCALES)}) {

@@ -94,6 +94,8 @@
     --write-pace: 10ms;
     --write-bleed: 0.2em;
 
+    --photo-fade: 1s;
+
     --ground: var(--color-ink);
     --scrim: rgb(0 0 0 / 0.54);
     --panel-wash: rgb(255 255 255 / 0.75);
@@ -138,6 +140,24 @@
 
 @utility v-scrim {
   background-color: var(--scrim);
+}
+
+@utility v-photo {
+  transition-property: opacity;
+  transition-duration: var(--photo-fade);
+  transition-timing-function: linear;
+
+  [data-photo="night"] & {
+    opacity: 0;
+  }
+
+  [data-period="night"] [data-photo="night"] & {
+    opacity: 1;
+  }
+
+  @variant motion-reduce {
+    transition-property: none;
+  }
 }
 
 @utility v-panel-wash {
@@ -194,7 +214,9 @@
   display: inline-block;
 
   @variant motion-safe {
-    animation: v-write var(--write-duration) var(--reveal-ease) backwards;
-    animation-delay: calc(var(--v-char, 0) * var(--write-pace));
+    [data-write] & {
+      animation: v-write var(--write-duration) var(--reveal-ease) backwards;
+      animation-delay: calc(var(--v-char, 0) * var(--write-pace));
+    }
   }
 }

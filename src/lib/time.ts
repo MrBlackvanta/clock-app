@@ -1,6 +1,6 @@
 export const NIGHT_HOUR = 18;
 
-type Period = "day" | "night";
+export type Period = "day" | "night";
 
 export const ABBREVIATION_LOCALES = ["en-GB", "en-US"];
 const DAY = 86_400_000;
