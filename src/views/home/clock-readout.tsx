@@ -17,7 +17,10 @@ export default function ClockReadout({ now }: { now: Date | null }) {
   const moment = now ?? SAMPLE_MOMENT;
 
   return (
-    <div className="pending:invisible flex flex-col gap-4 md:gap-0 lg:gap-4">
+    <div
+      key={now ? "live" : "sample"}
+      className="pending:invisible flex flex-col gap-4 md:gap-0 lg:gap-4"
+    >
       <p className="text-greeting md:text-greeting-md lg:text-greeting-lg flex items-center gap-4 uppercase">
         <SunIcon className="night:hidden size-6 shrink-0" />
         <MoonIcon className="night:block hidden size-6 shrink-0" />

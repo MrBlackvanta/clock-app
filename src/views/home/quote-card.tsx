@@ -64,10 +64,7 @@ export default function QuoteCard() {
       onBlur={resume}
       className="v-gutter flex min-h-0 items-start gap-4 self-start"
     >
-      <div
-        aria-live="polite"
-        className="flex max-w-135 flex-1 flex-col gap-2 md:gap-3"
-      >
+      <div className="flex max-w-135 flex-1 flex-col gap-2 md:gap-3">
         <blockquote className="text-quote md:text-quote-md">
           <p key={current.index}>
             {pacedWords(quoted).map(({ word, startsAt }, position) => (
